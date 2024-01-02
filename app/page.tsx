@@ -1,7 +1,9 @@
 import CustomLink from "@/components/custom-link"
 import packageJSON from "../package.json"
+import HLSPlayer from '@/components/HLSPlayer';
 
 export default function Index() {
+  const videoSrc = 'http://localhost:9000/video-service/output_video_2237e174-a98e-11ee-a8a8-6a6798be1bd7.m3u8';
   return (
     <div className="space-y-2">
       <h1 className="text-3xl font-bold">NextAuth.js Example</h1>
@@ -23,6 +25,7 @@ export default function Index() {
         <CustomLink href="https://nextjs.authjs.dev">NextAuth.js</CustomLink>{" "}
         version: <em>next-auth@{packageJSON.dependencies["next-auth"]}</em>
       </p>
+      <HLSPlayer src={videoSrc} />
     </div>
   )
 }

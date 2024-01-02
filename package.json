@@ -1,12 +1,12 @@
 {
   "name": "video-front",
   "private": true,
-  "description": "An example project for NextAuth.js with Next.js",
-  "repository": "https://github.com/nextauthjs/next-auth-example.git",
+  "description": "yuorei video front",
+  "repository": "",
   "bugs": {
-    "url": "https://github.com/nextauthjs/next-auth/issues"
+    "url": ""
   },
-  "homepage": "https://next-auth-example.vercel.app",
+  "homepage": "",
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -27,6 +27,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "hls.js": "^1.4.14",
     "lucide-react": "^0.274.0",
     "next": "latest",
     "next-auth": "beta",
