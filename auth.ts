@@ -143,6 +143,18 @@ export const config = {
       if (pathname === "/middleware-example") return !!auth
       return true
     },
+    jwt: async ({ token, account }) => {
+      if (account) { // 初回サインイン時にアカウント情報を取得できる
+        // keycloakのUserのIDがproviderAccountIdに入っている。idから取り出せるようになる。
+        token.id = account.providerAccountId
+      }
+      return token
+    },
+    session: async ({ session, token }) => {
+      if (session.user)
+        session.user.id = token.id as string  // jwt関数でセットしたidをtoken.idで取得できる
+      return session
+    }
   },
   // pages: {
   //   signIn: "/auth/signin",
@@ -152,7 +164,7 @@ export const config = {
   //   newUser: "/auth/new-user", // New users will be directed here on first sign in (leave the property out if not of interest)
   // },
   trustHost: true,
-  secret: process.env.SECRET?? "secret",
+  secret: process.env.SECRET ?? "secret",
 } satisfies NextAuthConfig
 
 export const { handlers, auth, signIn, signOut } = NextAuth(config)
