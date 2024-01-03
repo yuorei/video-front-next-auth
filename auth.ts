@@ -145,14 +145,13 @@ export const config = {
     },
     jwt: async ({ token, account }) => {
       if (account) { // 初回サインイン時にアカウント情報を取得できる
-        // keycloakのUserのIDがproviderAccountIdに入っている。idから取り出せるようになる。
-        token.id = account.providerAccountId
+        token.id_token = account.id_token
       }
       return token
     },
     session: async ({ session, token }) => {
-      if (session.user)
-        session.user.id = token.id as string  // jwt関数でセットしたidをtoken.idで取得できる
+      if (session.user && token.id_token)
+        session.user.id_token = token.id_token as string  // jwt関数でセットしたid_tokenをtoken.id_tokenで取得できる
       return session
     }
   },
